@@ -2,7 +2,7 @@ import pandas as pd
 import spacy
 
 # Load the combined news dataset
-combined_articles = pd.read_csv('../data/manip/combined_articles.csv')
+combined_articles = pd.read_csv('../data/manip/combined_articles.csv', nrows=1000)
 
 # Load the SpaCy English language model
 nlp = spacy.load('en_core_web_sm')
@@ -28,4 +28,4 @@ def extract_entities(text):
 combined_articles[['Country', 'Organization']] = combined_articles['Article'].apply(extract_entities)
 
 # Save the modified dataset to a CSV file
-combined_articles.to_csv('../data/manip/combined_articles_with_entities.csv', index=False)
+combined_articles.to_csv('../data/manip/combined_articles.csv', index=False)
