@@ -17,7 +17,13 @@ combined_articles['ID'] = combined_articles.index + 1
 cols = list(combined_articles.columns)
 cols.remove('ID')
 cols.insert(0, 'ID')
+cols.remove('Article')
+cols.append('Article')
 combined_articles = combined_articles[cols]
+
+# filter out rows where the "Country" column starts with a numerical value or "@"
+combined_articles = combined_articles[~combined_articles['Country'].str.startswith(('0', '1', '2', '3', '4', '5', '6', '7', '8', '9', '@'))]
+
 
 # Save the modified dataset to a CSV file
 combined_articles.to_csv(csv_path, index=False)
