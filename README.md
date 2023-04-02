@@ -40,6 +40,11 @@ To use the scripts, follow these steps:
 4. Run the `main.py` script or scripts in the following order:
 ```
 cd data-cleaning-tools
+py main.py
+```
+**Or**
+```
+cd data-cleaning-tools
 py merge_and_categorize.py
 py extract_country.py
 py sentiment_analysis.py
