@@ -16,7 +16,7 @@ def extract_entities(text):
         person = ""
         norp = ""
         for ent in doc.ents:
-            if ent.label_ == "GPE":
+            if ent.label_ == "GPE" and country == "":
                 if not country:
                     country = ent.text
             elif ent.label_ == "ORG":
