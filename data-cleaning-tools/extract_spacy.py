@@ -7,12 +7,14 @@ combined_articles = pd.read_csv('../data/manip/combined_articles.csv')
 # Load the SpaCy English language model
 nlp = spacy.load('en_core_web_sm')
 
-# Define a function to extract the location and organization entities from text
+# Define a function to extract entities from text
 def extract_entities(text):
     if isinstance(text, str):
         doc = nlp(text)
         country = ""
         organization = ""
+        person = ""
+        norp = ""
         for ent in doc.ents:
             if ent.label_ == "GPE":
                 if not country:
@@ -20,12 +22,27 @@ def extract_entities(text):
             elif ent.label_ == "ORG":
                 if not organization:
                     organization = ent.text
-        return pd.Series({'Country': country, 'Organization': organization})
+            elif ent.label_ == "PERSON":
+                if not person:
+                    person = ent.text
+            elif ent.label_ == "NORP":
+                if not norp:
+                    norp = ent.text
+        if not country:
+            country = "Other"
+        if not organization:
+            organization = "Other"
+        if not person:
+            person = "Other"
+        if not norp:
+            norp = "Other"
+        return pd.Series({'Country': country, 'Organization': organization, 'Person': person, 'NORP': norp})
     else:
-        return pd.Series({'Country': "", 'Organization': ""})
+        return pd.Series({'Country': "Other", 'Organization': "Other", 'Person': "Other", 'NORP': "Other"})
+
 
 # Apply the extract_entities() function to the 'Article' column
-combined_articles[['Country', 'Organization']] = combined_articles['Article'].apply(extract_entities)
+combined_articles[['Country', 'Organization', 'Person', 'NORP']] = combined_articles['Article'].apply(extract_entities)
 
 # Save the modified dataset to a CSV file
-combined_articles.to_csv('../data/manip/combined_articles_with_entities.csv', index=False)
+combined_articles.to_csv('../data/manip/combined_articles.csv', index=False)

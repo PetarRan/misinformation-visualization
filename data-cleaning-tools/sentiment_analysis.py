@@ -1,28 +1,16 @@
 from textblob import TextBlob
 import pandas as pd
 
-# Read in the dataset
-combined_articles = pd.read_csv('../data/manip/combined_articles.csv')
+# Load the combined news dataset
+combined_articles = pd.read_csv('../data/manip/combined_articles.csv', nrows=1000)
 
-# Create an empty list to hold the polarity scores
-polarity_scores = []
-
-# Loop through each row in the dataset
-for index, row in combined_articles.iterrows():
-    # Get the text for the current row
-    text = row['Article']
-    
-    # Create a TextBlob object
+# Define a function to calculate polarity score
+def calculate_polarity(text):
     blob = TextBlob(text)
+    return round(blob.sentiment.polarity, 5)
 
-    # Get the polarity score (ranging from -1 to 1)
-    polarity = blob.sentiment.polarity
-    
-    # Add the polarity score to the list
-    polarity_scores.append(polarity)
+# Apply the calculate_polarity() function to the 'Article' column
+combined_articles['Polarity'] = combined_articles['Article'].apply(calculate_polarity)
 
-# Add the polarity scores as a new column to the dataset
-combined_articles['Polarity'] = polarity_scores
-
-# Print the first few rows of the updated dataset
-print(combined_articles.head())
+# Save the modified dataset to a CSV file
+combined_articles.to_csv('../data/manip/combined_articles.csv', index=False)
