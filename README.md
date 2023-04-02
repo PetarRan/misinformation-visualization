@@ -2,7 +2,7 @@
 
 Kaggle [data](https://www.kaggle.com/datasets/stevenpeutz/misinformation-fake-news-text-dataset-79k) used.
 
-Tableau [**TBP**]
+Tableau Story [Here](https://public.tableau.com/app/profile/petar.randjelovic/viz/VeracityAVisualExplorationofMisinformation/VeracityAVisualExplorationofMisinformation).
 
 ## Data Cleaning Tools
 
