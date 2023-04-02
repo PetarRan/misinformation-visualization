@@ -12,7 +12,7 @@ combined_articles = combined_articles[combined_articles['WordCount'] >= 10]
 
 # Reset the index and update the 'ID' column
 combined_articles = combined_articles.reset_index(drop=True)
-combined_articles['Id'] = combined_articles.index + 1
+combined_articles['ID'] = combined_articles.index + 1
 
 cols = list(combined_articles.columns)
 cols.remove('ID')
