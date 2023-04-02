@@ -15,8 +15,8 @@ combined_articles = combined_articles.reset_index(drop=True)
 combined_articles['Id'] = combined_articles.index + 1
 
 cols = list(combined_articles.columns)
-cols.remove('Id')
-cols.insert(0, 'Id')
+cols.remove('ID')
+cols.insert(0, 'ID')
 combined_articles = combined_articles[cols]
 
 # Save the modified dataset to a CSV file
