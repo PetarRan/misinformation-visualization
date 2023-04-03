@@ -53,4 +53,13 @@ py word_count.py
 py clean_corrupted.py
 ```
 
+### Gallery
 
+
+![Veracity_ A Visual Exploration of Misinformation](https://user-images.githubusercontent.com/70757499/229386422-8b46e833-7fcd-429f-bb6d-900315fa1bb8.png)
+
+![Veracity_ A Visual Exploration of Misinformation (1)](https://user-images.githubusercontent.com/70757499/229386421-7f5fafc3-5f9b-47fa-be68-402c79c064cb.png)
+
+![Veracity_ A Visual Exploration of Misinformation (2)](https://user-images.githubusercontent.com/70757499/229386420-44b1dd1c-420d-4635-86df-59870e941fb4.png)
+
+![Veracity_ A Visual Exploration of Misinformation (3)](https://user-images.githubusercontent.com/70757499/229386419-15a26da1-ee64-4372-8266-f3ec3b644447.png)
